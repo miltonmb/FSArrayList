@@ -27,6 +27,7 @@ int main() {
 		cout << "7- Obtener capacidad"<<endl;
 		cout << "8- Borrar toda la lista"<<endl;
 		cout << "9- Imprimir elementos de la lista"<<endl;
+		cout << "10- ver Size"<<endl;
 		int opcion  = 0;
 		cin >> opcion;
 			switch(opcion){
@@ -141,6 +142,10 @@ int main() {
 			cout << "Desea Continuar[s/n]: ";
 			cin >> Resp;
 		}
+		for (int i = 0; i < lista->Size(); ++i){
+			lista->remove(i);
+		}
+		lista->clear();
 		delete lista;
 	}
 }
