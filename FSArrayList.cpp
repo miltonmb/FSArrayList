@@ -44,30 +44,39 @@ bool FSArrayList::insert(object* e, int p){
 }
 
 object* FSArrayList::remove(int p){
-	object* deletedItem= array[p];
-	if(p < 0 || p > Size()){
-		return NULL;
+	if(!isEmpty()){
+		object* deletedItem= array[p];
+		delete array[p];
+		if(p < 0 || p > Size()){
+			return 0;
+		}
+		for (int i = p; i < size; ++i){
+			array[i] = array[i+1];
+		}
+		size --;
+		return deletedItem;
+	}else{
+		return 0;
 	}
-	if(isFull()){
-		return NULL;
-	}
-	for (int i = 1; i < size; ++i){
-		array[i] = array[i+1];
-	}
-	size --;
-	return deletedItem;
-
 }
 
 object* FSArrayList::first()const {
-	if (array[0]==NULL){
-		return NULL;
+	if(!isEmpty()){
+		if (array[0]==0){
+			return 0;
+		}
+		return array[0];
+	}else{
+		return 0;
 	}
-	return array[0];
 }
 
 object* FSArrayList::last()const{
-	return array[size-1];
+	if(!isEmpty()){
+		return array[size-1];
+	}else{
+		return 0;
+	}	
 }
 
 
@@ -76,23 +85,33 @@ void FSArrayList::clear(){
 	for(int i = 0; i < Size();i++){
 		 if(array[i]){
 			delete array[i];
-			array[i]=NULL;
+			array[i]= 0;
 		}	
 	}
+	size  = 0;
 }
 int FSArrayList::indexOf(object* e)const {
-	for (int i = 0; i < size; ++i){
-		if (e -> equals(array[i])){
-			return i;
+	if(!isEmpty()){
+		for (int i = 1; i < size; ++i){
+			if (e -> equals(array[i])){
+				return i;
+			}
 		}
-	}
 	return -1;
+	}
 }
 
 object* FSArrayList::get(int p){
-	object* getObj = array[p];
-
-	return getObj;
+	if(!isEmpty()){
+		if(p < 0 || p>Size()){
+			return 0;
+		}else{
+			object* getObj = array[p];
+			return getObj;
+		}
+	}else{
+		return 0;
+	}
 }
 
 int FSArrayList::Capacity()const {

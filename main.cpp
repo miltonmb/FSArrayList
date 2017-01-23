@@ -26,6 +26,7 @@ int main() {
 		cout << "6- Obtener una persona"<<endl;
 		cout << "7- Obtener capacidad"<<endl;
 		cout << "8- Borrar toda la lista"<<endl;
+		cout << "9- Imprimir elementos de la lista"<<endl;
 		int opcion  = 0;
 		cin >> opcion;
 			switch(opcion){
@@ -53,7 +54,7 @@ int main() {
 					cout << "Ingrese la posicion de la persona que quiere eliminar: ";
 					cin >> posRemove;
 					if(lista -> remove(posRemove)){
-					cout << "Se ha borrado con exito!";
+					cout << "Se ha borrado con exito!"<<endl;
 					}else{
 						cout << "Ha ocurrido un error! por favor contacte con el Administrador"<<endl;
 					}
@@ -87,9 +88,9 @@ int main() {
 					cout << "Ingrese la edad: ";
 					cin >>edadIndex;
 					Person* tempIndex =  new Person(nameIndex,edadIndex);
-					for (int i = 0; i < lista->Size(); ++i){}{
-						if(dynamic_cast<Person*>(lista->last())){
-							tempIndexOf = dynamic_cast<Person*>(lista->last());
+					for (int i = 0; i < lista->Size(); ++i){
+						if(tempIndexOf = dynamic_cast<Person*>(lista->get(i))){
+							tempIndexOf = dynamic_cast<Person*>(lista->get(i));
 							if(tempIndexOf -> equals(tempIndex)){
 								cout <<"El indice es: "<< lista -> indexOf(tempIndexOf);
 								break;
@@ -118,6 +119,23 @@ int main() {
 
 				case 8:{
 					lista ->clear();
+					break;
+				}
+
+				case 9:{
+					Person* tempImp;
+					for (int i = 0; i < lista->Size(); ++i){
+						if(dynamic_cast<Person*>(lista->get(i))){
+							tempImp = dynamic_cast<Person*>(lista->get(i));
+							cout << tempImp->toString()<<endl;
+						}
+					}
+					break;
+				}
+
+				case 10:{
+					cout << "size: "<<lista->Size()<<endl;
+					break;
 				}
 			}
 			cout << "Desea Continuar[s/n]: ";

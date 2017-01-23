@@ -15,7 +15,7 @@ string Person::toString()const{
 	stringstream ss;
 	ss << "Name "<< name;
 	ss << endl; 
-	ss << "Age"<< age;
+	ss << "Age "<< age;
 	return ss.str();
 }
 
