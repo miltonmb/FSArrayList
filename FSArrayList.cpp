@@ -119,16 +119,14 @@ int FSArrayList::Capacity()const {
 }
 
 bool FSArrayList::isEmpty()const {
-	if (size == 0)
-	{
+	if (size == 0){
 		return true;
 	}
 	return false;
 }
 
 bool FSArrayList::isFull()const {
-	if (capacity == Size())
-	{
+	if (capacity == Size()){
 		return true;
 	}
 

@@ -1,8 +1,11 @@
-list:	ADTList.o FSArrayList.o object.o Person.o main.o
-	g++ ADTList.o FSArrayList.o object.o Person.o main.o -o list
+lista:	ADTList.o VSArrayList.o FSArrayList.o object.o Person.o main.o
+	g++ ADTList.o VSArrayList.o FSArrayList.o object.o Person.o main.o -o lista
 
-main.o:	ADTList.h FSArrayList.h object.h main.cpp Person.h
+main.o:	ADTList.h VSArrayList.h object.h main.cpp Person.h
 	g++ -c main.cpp
+
+VSArrayList.o:	ADTList.h VSArrayList.cpp VSArrayList.h
+	g++ -c VSArrayList.cpp
 
 FSArrayList.o:	ADTList.h FSArrayList.cpp FSArrayList.h
 	g++ -c FSArrayList.cpp
@@ -17,4 +20,4 @@ Object.o:	object.h object.cpp
 	g++ -c object.cpp
 
 clean:
-	rm -f *.o list
+	rm -f *.o lista
